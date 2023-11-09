@@ -1,0 +1,222 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 20px;
+    background-color: #E5E5E5;
+}
+h1, h2, h3 {
+    color: #333;
+}
+
+h3 {
+    margin: 1.5em 0;
+    font-size: 0.95rem;
+}
+p {
+    color: #555;
+}
+.smallfont {
+    font-size: 0.8em;
+    color: #555;
+}
+a {
+    color: #333;
+}
+
+.box {
+    position: relative;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.05);
+}
+.toggle-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    padding: 5px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.toggle-button:hover {
+    background-color: #ccc;
+}
+.collapsible-content {
+    display: block;
+}
+.label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.primary-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #555;
+    font-size: 0.9em;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.primary-button:hover {
+    background-color: #333;
+}
+.close-icon {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-icon:hover,
+.close-icon:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.secondary-button {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #f2f2f2; /* Light gray background */
+    color: #555;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px; /* Space between the two buttons */
+}
+.secondary-button:hover {
+    background-color: #e0e0e0; /* Slightly darker on hover */
+}
+
+.modal.narrow-modal .modal-content {
+    width: 20%; /* Adjust this value to your desired width */
+    margin: 15% auto;
+}
+
+
+/* table styles */
+.div-table {
+    display: table;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+.div-row {
+    display: table-row;
+}
+
+.div-cell {
+    display: table-cell;
+    border: 0.5px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Add this to give a background color to the header row */
+.div-table .div-row:first-child .div-cell {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}  
+
+.responsive-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* for smooth scrolling on iOS */
+}
+
+/* Optionally, you can also add media queries to target specific screen widths */
+@media only screen and (max-width: 800px) {
+    .responsive-table {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* styles for companies grouped by invention principles */
+
+.company-tile {
+    flex: 0 1 calc(20% - 10px); /* Adjust the width for 5 tiles per row, minus the gap */
+    background-color: #f9f9f9; /* Light background color */
+    padding: 10px;
+    box-sizing: border-box;
+    height: auto; /* Adjust the height as needed, or use 'auto' for flexible height */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: start; /* Align children to the start of the main axis */
+    align-items: flex-start; /* Align children to the start of the cross axis */
+    margin-bottom: 10px; /* Margin at the bottom for spacing between rows */
+    border-radius: 8px; /* Rounded corners */
+    gap: 10px; /* Equal vertical spacing between components */
+}
+  
+.company-tile h3 {
+    margin: 0; /* Remove default margin from h3 */
+    width: 100%; /* Full width of the container */
+    font-size: 1em; /* Adjust the font size as needed */
+    /* Ensure the header is visible */
+    color: inherit; /* Or set a specific color */
+    font-weight: bold; /* Adjust the font weight as needed */
+    /* Additional styling as needed */
+}
+  
+.tiles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the gap as needed */
+    margin-bottom: 20px;
+}
+  
+.principle-row h2 {
+    clear: both;
+    margin-top: 20px; /* Space above the principle title, if needed */
+}
+  
+/* Responsive adjustments if needed */
+@media (max-width: 800px) {
+    .company-tile {
+      flex: 0 1 calc(50% - 10px); /* 2 tiles per row on smaller screens */
+    }
+}
