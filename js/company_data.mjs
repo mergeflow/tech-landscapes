@@ -61,7 +61,7 @@ document.querySelectorAll('.modal-trigger').forEach(function(trigger) {
 });
 
 // Function to load and display companies grouped by invention principles
-function loadAndDisplayCompanies() {
+export function loadAndDisplayCompanies() {
     const groupedCompanies = groupCompaniesByPrinciple(factoryAutomationCompanyData);
 
     // Get the div where you want to add content
@@ -115,5 +115,8 @@ function loadAndDisplayCompanies() {
     });
 }
 
-// Add click event listener to the button
-document.getElementById('loadCompanies').addEventListener('click', loadAndDisplayCompanies);
+// execute the function as soon as this module is loaded
+loadAndDisplayCompanies();
+
+// Add click event listener to the button -- not needed at the moment because this happens upon load of page now
+//document.getElementById('loadCompanies').addEventListener('click', loadAndDisplayCompanies);
