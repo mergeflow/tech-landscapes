@@ -1,7 +1,7 @@
 /*
 remove spaces and noonalphanumeric chars from e.g. a company name so that it can be used as JSON index
 */
-export function sanitizeCompanyName(name) {
+export function sanitizeJsonIndexName(name) {
     return name.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9_]/g, '');
 }
 

@@ -1,5 +1,6 @@
-import { sanitizeCompanyName, formatRawDate, numberToUsCurrency, groupCompaniesByPrinciple } from "./data_utils.mjs";
+import { sanitizeJsonIndexName, formatRawDate, numberToUsCurrency, groupCompaniesByPrinciple } from "./data_utils.mjs";
 import { factoryAutomationCompanyData } from "./factory_automation_company_data.mjs";
+import { factoryAutomationInventionPrinciples } from "./factory_automation_invention_principles_data.mjs";
 
 /*
 transform company data so that company name is used as index
@@ -7,9 +8,8 @@ transform company data so that company name is used as index
 let transformedCompanyData = {
     "companies" : {}
 }
-
 factoryAutomationCompanyData.companies.forEach(company => {
-    let key = sanitizeCompanyName(company.companyname);
+    let key = sanitizeJsonIndexName(company.companyname);
     transformedCompanyData.companies[key] = company;
 });
 
@@ -27,7 +27,6 @@ function populateModal(companyName) {
           </div>
         `;
       }).join('');
-      
 
       modalBody.innerHTML = `
       <h2>${data.companyname}</h2>
@@ -84,11 +83,21 @@ export function loadAndDisplayCompanies() {
       if (groupedCompanies.hasOwnProperty(principle)) {
         // Sort companies alphabetically A-Z
         const sortedCompanies = groupedCompanies[principle].sort();
+
+        var boxDiv = document.createElement('div');
+        boxDiv.className = 'box'
+        boxDiv.innerHTML = `
+        <button class="toggle-button" onclick="toggleContent(this)"><i class="fas fa-angle-down"></i></button>
+        <h2>${principle}</h2>
+        <p>${factoryAutomationInventionPrinciples.principles.find(p => p.name === principle).description}</p>
+        `
+
+        var collapsibleContentDiv = document.createElement('div');
+        collapsibleContentDiv.className = 'collapsible-content';
         
         // Create a new div for the principle row
         var principleDiv = document.createElement('div');
         principleDiv.className = 'row principle-row';
-        principleDiv.innerHTML = `<h2>${principle}</h2>`;
         var tilesContainer = document.createElement('div');
         tilesContainer.className = 'tiles-container';
   
@@ -98,7 +107,7 @@ export function loadAndDisplayCompanies() {
           companyDiv.className = 'company-tile';
 
           // Find the company data by company name
-          let companyData = factoryAutomationCompanyData.companies.find(company => sanitizeCompanyName(company.companyname) === sanitizeCompanyName(companyName));
+          let companyData = factoryAutomationCompanyData.companies.find(company => sanitizeJsonIndexName(company.companyname) === sanitizeJsonIndexName(companyName));
 
           // Check if companyData exists and has the unique_technology property
           let uniqueTechnology = companyData && companyData.unique_technology ? companyData.unique_technology : 'Technology details not available';
@@ -106,13 +115,15 @@ export function loadAndDisplayCompanies() {
           companyDiv.innerHTML = `
           <h3>${companyName}</h3>
           <p class="smallfont">${uniqueTechnology}</p>
-          <a href="#" class="modal-trigger smallfont" data-name="${sanitizeCompanyName(companyName)}">Show details &#8599;</a><br>
+          <a href="#" class="modal-trigger smallfont" data-name="${sanitizeJsonIndexName(companyName)}">Show details &#8599;</a><br>
           `;
           tilesContainer.appendChild(companyDiv);
         });
   
         principleDiv.appendChild(tilesContainer);
-        companiesDiv.appendChild(principleDiv);
+        collapsibleContentDiv.appendChild(principleDiv);
+        boxDiv.appendChild(collapsibleContentDiv);
+        companiesDiv.appendChild(boxDiv);
       }
     }
 

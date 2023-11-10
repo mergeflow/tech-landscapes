@@ -10,7 +10,6 @@ function toggleContent(button) {
       button.innerHTML = '<i class="fas fa-angle-up"></i>';
     }
 }
-  
 
 function openModal(modalId) {
     document.getElementById(modalId).style.display = "block";

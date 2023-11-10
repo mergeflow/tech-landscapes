@@ -3,47 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced manufacturing companies</title>
+    <title id="pageTitle"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <script src="js/scripts.mjs" defer></script>
     <script type="module" src="js/company_data.mjs" defer></script>
+    <script type="module" src="js/factory_automation_page_general_infos.mjs" defer></script>
 </head>
 <body>
-    <h1>Advanced manufacturing companies</h1>
-    <p class="date">Created October 26th, 2023</p>
-    <div class="box">
-        <button class="toggle-button" onclick="toggleContent(this)"><i class="fas fa-angle-up"></i></button>
-        <h2>Companies grouped by invention principles</h2>
-        <p>The invention principles below are specific to advanced manufacturing. They are generated automatically, based on the original TRIZ invention principles.</p>
-        <div class="collapsible-content">
-            <div id="companies">
-                <!-- the companies content created by javascript will go here-->
-            </div>
-        </div>
-    </div>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Machina Labs</h2>
-            <p>Modal Content Here</p>
-            <div style="display: flex;">
-                <div style="flex: 1; padding: 10px;"><h3>Technology</h3><p>Machina Labs combines AI and robotics to manufacture advanced composite and metal products.</p></div>
-                <div style="flex: 1; padding: 10px;"><h3>Solved Problem</h3><p>Machina Labs enables on-demand manufacturing and unlocks innovation in manufacturing.</p></div>
-                <div style="flex: 1; padding: 10px;"><h3>Use Cases</h3><p>Machina Labs addresses the need for faster and more flexible manufacturing of advanced composite and metal products.</p></div>
-            </div>
-            <div style="display: flex;">
-                <div style="flex: 1; padding: 10px;"><h3>Technology</h3><p>Machina Labs combines AI and robotics to manufacture advanced composite and metal products.</p></div>
-            </div>
-              
-            
-            <button onclick="closeModal('myModal')" class="primary-button">Close</button>
-            <button class="secondary-button" onclick="openNotImplementedModal()">Save</button>
-        </div>
+    <h1 id="header"></h1>
+    <p id="createdDate" class="date"></p>
+    <h2>Companies grouped by invention principles</h2>
+    <p id="subheader"></p>
+    <div id="companies">
+        <!-- the companies content created by javascript will go here-->
     </div>
 
     <!-- The "not implemented yet" modal -->

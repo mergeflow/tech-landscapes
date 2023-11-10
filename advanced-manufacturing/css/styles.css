@@ -46,7 +46,7 @@ a {
     background-color: #ccc;
 }
 .collapsible-content {
-    display: block;
+    display: none;
 }
 .label {
     font-weight: bold;
@@ -207,13 +207,6 @@ a {
     gap: 10px; /* Adjust the gap as needed */
     margin-bottom: 20px;
 }
-
-/*
-.principle-row h2 {
-    clear: both;
-    margin-top: 20px; 
-}
-*/
 
 /* for the invention principles in the modal popup */
 .principle {
