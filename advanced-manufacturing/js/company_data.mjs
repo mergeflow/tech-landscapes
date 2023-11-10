@@ -19,7 +19,10 @@ function populateModal(companyName) {
     if (data) {
       var modalBody = document.getElementById('modal-body');
 
-      let principlesHtml = transformedCompanyData.companies[companyName].principles.map(principle => {
+      // order principles alphabetically      
+      let principlesHtml = transformedCompanyData.companies[companyName].principles
+      .sort((a, b) => a.principle_name.localeCompare(b.principle_name))
+      .map(principle => {
         return `
           <div class="principle">
             <div class="smallfont"><strong>${principle.principle_name}</strong></div>
@@ -27,7 +30,7 @@ function populateModal(companyName) {
           </div>
         `;
       }).join('');
-
+    
       modalBody.innerHTML = `
       <h2>${data.companyname}</h2>
       <p class="smallfont">Venture funding: ${numberToUsCurrency(parseFloat(data.funding_amount))} (on ${formatRawDate(data.date)})</p>
@@ -79,7 +82,11 @@ export function loadAndDisplayCompanies() {
     var companiesDiv = document.getElementById('companies');
     // Clear existing content
     companiesDiv.innerHTML = '';
-    for (const principle in groupedCompanies) {
+
+    // get principles and sort them alphabetically
+    const uniquePrinciplesSorted = new Set(Object.keys(groupedCompanies).sort());
+
+    uniquePrinciplesSorted.forEach(principle => {
       if (groupedCompanies.hasOwnProperty(principle)) {
         // Sort companies alphabetically A-Z
         const sortedCompanies = groupedCompanies[principle].sort();
@@ -125,7 +132,7 @@ export function loadAndDisplayCompanies() {
         boxDiv.appendChild(collapsibleContentDiv);
         companiesDiv.appendChild(boxDiv);
       }
-    }
+    });
 
     // Add event listeners for modal triggers
     document.querySelectorAll('.modal-trigger').forEach(trigger => {

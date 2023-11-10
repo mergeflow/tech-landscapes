@@ -45,7 +45,7 @@ group companies by invention principles, only consider companies with topic rele
 */
 export function groupCompaniesByPrinciple(rawData) {
     if (rawData && rawData.companies) {
-      return rawData.companies.reduce((acc, company) => {
+      return rawData.companies.reduce((groupedCompanies, company) => {
         // Check for company's relevance and proceed only if the relevance_rating is "3"
         if (company.relevance && company.relevance.relevance_ranking === "3") {
           if (company.principles !== null && company.principles !== undefined) {
@@ -58,10 +58,10 @@ export function groupCompaniesByPrinciple(rawData) {
                 acc[principle.principle_name] = acc[principle.principle_name].concat(company.companyname);
               }
               return acc;
-            }, acc);
+            }, groupedCompanies);
           }
         }
-        return acc;
+        return groupedCompanies;
       }, {});
     } else {
       return {};
