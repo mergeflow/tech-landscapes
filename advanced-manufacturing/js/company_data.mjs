@@ -20,21 +20,33 @@ function populateModal(companyName) {
       var modalBody = document.getElementById('modal-body');
 
       let principlesHtml = transformedCompanyData.companies[companyName].principles.map(principle => {
-        return `<div style="display: flex; margin-top: 10px;">
-                  <div style="min-width: 30%; max-width: 30%;" class="smallfont"><strong>${principle.principle_name}</strong></div>
-                  <div style="width: 70%;" class="smallfont">${principle.principle_explanation}</div>
-                </div>`;
+        return `
+          <div class="principle">
+            <div class="smallfont"><strong>${principle.principle_name}</strong></div>
+            <div class="smallfont">${principle.principle_explanation}</div>
+          </div>
+        `;
       }).join('');
+      
 
       modalBody.innerHTML = `
       <h2>${data.companyname}</h2>
       <p class="smallfont">Venture funding: ${numberToUsCurrency(parseFloat(data.funding_amount))} (on ${formatRawDate(data.date)})</p>
       <p class="smallfont"><a href="${data.url}" target="_blank">news about the funding <i class="fa-solid fa-link"></i></a></p>
-      <div style="display: flex;">
-        <div style="flex: 1; padding: 10px;"><h3>Technology</h3><p class="smallfont">${data.unique_technology}</p></div>
-        <div style="flex: 1; padding: 10px;"><h3>Solved Problem</h3><p class="smallfont">${data.solved_problem}</p></div>
-        <div style="flex: 1; padding: 10px;"><h3>Use Cases</h3><p class="smallfont">${data.use_case}</p></div>
-      </div>
+      <div class="info-container">
+        <div class="info-block">
+          <h3>Technology</h3>
+          <p class="smallfont">${data.unique_technology}</p>
+        </div>
+        <div class="info-block">
+          <h3>Solved Problem</h3>
+          <p class="smallfont">${data.solved_problem}</p>
+        </div>
+        <div class="info-block">
+          <h3>Use Cases</h3>
+          <p class="smallfont">${data.use_case}</p>
+        </div>
+      </div>    
       <h3>Invention Principles</h3>
       ${principlesHtml}
       <button onclick="closeModal('companyDetailsModal')" class="primary-button">Close</button>

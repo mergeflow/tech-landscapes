@@ -176,7 +176,6 @@ a {
 }
 
 /* styles for companies grouped by invention principles */
-
 .company-tile {
     flex: 0 1 calc(20% - 10px); /* Adjust the width for 5 tiles per row, minus the gap */
     background-color: #f9f9f9; /* Light background color */
@@ -208,13 +207,52 @@ a {
     gap: 10px; /* Adjust the gap as needed */
     margin-bottom: 20px;
 }
-  
+
+/*
 .principle-row h2 {
     clear: both;
-    margin-top: 20px; /* Space above the principle title, if needed */
+    margin-top: 20px; 
+}
+*/
+
+/* for the invention principles in the modal popup */
+.principle {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+/* for technology, solved problem, use cases columns in modal popup */
+.info-container {
+    display: flex;
+    flex-direction: column;
 }
   
-/* Responsive adjustments if needed */
+.info-block {
+    flex: 1;
+    padding: 10px;
+}
+
+/* Responsive adjustments */
+@media (min-width: 600px) {
+    .principle {
+      flex-direction: row;
+    }
+    .principle > div:first-child {
+      flex: 1;
+      font-weight: bold;
+    }
+    .principle > div:last-child {
+      flex: 3;
+    }
+    .smallfont {
+      font-size: 0.8em;
+    }
+    .info-container {
+      flex-direction: row;
+    }
+}
+  
 @media (max-width: 800px) {
     .company-tile {
       flex: 0 1 calc(50% - 10px); /* 2 tiles per row on smaller screens */
